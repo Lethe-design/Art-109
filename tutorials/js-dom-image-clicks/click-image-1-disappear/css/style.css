@@ -1,0 +1,69 @@
+
+html {
+    box-sizing: border-box;
+    font-size: 62.5%;
+}
+
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+    margin: 0;
+    padding: 0;
+}
+
+
+html,
+body {
+    height: 100%;
+}
+
+
+body {
+    font-size: 1.6rem;
+    /* font-size 1.6rem is now the same as 16px */
+    line-height: 1.6;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    background-color: black;
+    color: white;
+}
+
+/* ------------------ basic image wrap setup ------------------ */
+/* change display to inline-block so images wrap */
+/* if you want to control the max size of an image, set max-width */
+.image-div {
+    display: inline-block;
+    /* max-width: 400px; */
+}
+
+/* image width 100% means the image fills the div */
+img {
+    width: 100%;
+}
+
+
+/* ------------------ ALL positioned on top of each other ------------------ */
+/* .image-div {
+    position: absolute;
+    top: 100px;
+    left: 100px;
+} */
+
+
+/* ------------------ Positioned individually ------------------ */
+/* only two are positioned below, you could do this for every one.. */
+
+/* #image-0 {
+    position: absolute;
+    top: 50px;
+    left: 250px;
+}
+
+#image-1 {
+    position: fixed;
+    top: 350px;
+    left: 150px;
+} */
+
+/* .... continue positioning the rest of the image ID elements  */

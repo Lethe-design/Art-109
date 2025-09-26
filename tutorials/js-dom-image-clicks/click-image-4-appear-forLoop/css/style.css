@@ -1,0 +1,105 @@
+/*
+CSS RESETS:
+ Border box reset:
+https://www.paulirish.com/2012/box-sizing-border-box-ftw/
+ 62.5% Fix: https: //www.aleksandrhovhannisyan.com/blog/62-5-percent-font-size-trick/
+*/
+
+
+html {
+    box-sizing: border-box;
+    font-size: 62.5%;
+}
+
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+    margin: 0;
+    padding: 0;
+}
+
+
+html,
+body {
+    height: 100%;
+}
+
+
+body {
+    font-size: 1.6rem;
+    /* font-size 1.6rem is now the same as 16px */
+    line-height: 1.6;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: white;
+    background-color: black;
+}
+
+/* set image size to be full width of div */
+img {
+    width: 100%;
+}
+
+/* create hidden class so images start as hidden*/
+.hidden {
+    visibility: hidden;
+}
+
+
+
+/* setting the main position to relative makes it so it (and all the image positions) sit *below* the header. This is because position: absolute values for the images are *relative* to the first parent element with a position 
+UNCOMMENT MAIN POSITION: RELATIVE IF YOU WANT IMAGE POSITIONS TO BE RELATIVE TO VIEWPORT AND NOT SIT BELOW THE HEADER*/
+main {
+    position: relative;
+}
+
+/* if you wanted to set max size for images, otherwise they will be size of image file */
+/* .image-div {
+    max-width: 400px;
+} */
+
+
+
+#image-0 {
+    position: absolute;
+    top: 0;
+    left: 50px;
+}
+
+#image-1 {
+    position: absolute;
+    top: 200px;
+    left: 150px;
+
+}
+
+#image-2 {
+    position: fixed;
+    top: 0;
+    right: 10vw;
+}
+
+#image-3 {
+    position: absolute;
+    top: 80vh;
+    left: 15vw;
+}
+
+#image-4 {
+    position: absolute;
+    top: 130vh;
+    right: 50px;
+}
+
+#image-5 {
+    position: absolute;
+    top: 180vh;
+    left: 50px;
+}
+
+#image-6 {
+    position: fixed;
+    top: 0;
+    left: 50px;
+}

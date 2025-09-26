@@ -1,0 +1,64 @@
+/*
+CSS RESETS:
+ Border box reset:
+https://www.paulirish.com/2012/box-sizing-border-box-ftw/
+ 62.5% Fix: https: //www.aleksandrhovhannisyan.com/blog/62-5-percent-font-size-trick/
+*/
+
+
+html {
+    box-sizing: border-box;
+    font-size: 62.5%;
+}
+
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+    margin: 0;
+    padding: 0;
+}
+
+
+html,
+body {
+    height: 100%;
+}
+
+
+body {
+    font-size: 1.6rem;
+    /* font-size 1.6rem is now the same as 16px */
+    line-height: 1.6;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: white;
+    background-color: black;
+}
+
+
+/* change display to inline-block so images wrap */
+.image-div {
+    display: inline-block;
+}
+
+/* remove images from regular flow by changing position to fixed / absolute, or more! 
+Only the two images are positioned here... */
+
+#image-0 {
+    /* position: fixed; */
+    position: absolute;
+    top: 50px;
+    left: 250px;
+}
+
+#image-1 {
+    position: fixed;
+    /* position: absolute; */
+    top: 350px;
+    left: 150px;
+}
+
+
+
+
