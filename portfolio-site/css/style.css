@@ -15,6 +15,7 @@ ____________________________________________*/
 */
 html {
     box-sizing: border-box;
+    font-size: 62.5%; /* set default to 10 px*/
 }
 *, *:before, *:after {
     box-sizing: inherit;
@@ -26,6 +27,25 @@ html, body {
 
 body {
     background: #f6f6f6;
+    margin: 0;
+    font-family: "Open Sans", sans-serif;
+    font-size: 1.5rem;
+    line-height: 1.4;
+}
+h1, h2, h3 {
+    font-family: "Open Sans", sans-serif;
+    font-weight: 400;
+    margin: 0;
+}
+h1 {
+    font-size: 7rem;
+    line-height: 0.85;
+}
+h2 {
+    font-size: 3.6rem;
+}
+h3 {
+    font-size: 2.4rem;
 }
 
 /* links */
@@ -46,6 +66,13 @@ footer a:hover {
     background: #3c8453;
     color:#f6f6f6 ;
     text-decoration: none;
+    text-transform: uppercase;
+    font-size: 1.2rem;
+    display: inline-block;
+    padding: 7px;
+    letter-spacing: 0.1rem;
+    line-height: 1;
+    border-radius: 4px;
 }
 
 .content-wrapper {
@@ -59,9 +86,16 @@ ____________________________________________*/
 .home {
     background: url(../images/bg-home-office-studio.jpg) no-repeat;
     background-size: cover;
+    display: flex;
+    flex-direction: column;
 }
 .home .content-wrapper {
-    background: rgb(255, 255, 255 / 0.9);
+    flex: 1 0 auto;
+}
+.content-bg {
+     background: rgb(255 255 255 / 0.9);
+        padding: 30px;
+
 }
 
 
@@ -87,32 +121,72 @@ ____________________________________________*/
     position: fixed;
     top: 5px;
     left: 5px;
+    font-size: 1.5rem;
 }
 
-/*PROFILE
+/*PROJECTS
 ____________________________________________*/
 .project-item{
-    display: flow-root;
     margin: 30px 0;
 }
 .project-item img {
     width: 300px;
+}
+@media screen and (min-width:860px){
+    .project-item{
+    display: flow-root;
+    }
+    .project-item img {
     float: left;
     margin-right: 20px;
+    }
 }
+@media screen and (max-width:859px){
+    .project-wrapper {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 20px;
+    }
+    .project-item img {
+        width: 100%;
+    }
+}
+
 
 /*WORK EXPERIENCE
 ____________________________________________*/
+.work-item {
+    display: grid;
+    grid-template-columns: 300fr 1fr;
+    column-gap: 20px;
+    margin: 30px 0;
+}
+.work-details p {
+    margin: 0;
+}
+.work-summary p:first-child {
+    margin-top: 0;
+}
 
 /*EDUCATION
 ____________________________________________*/
+.education-item {
+    margin: 30px 0;
+}
+.education-item p {
+    margin: 0;
+}
+
 
 /*FOOTER
 ____________________________________________*/
 
 footer {
     background: #222;
-    color: #d3d4d6
+    color: #d3d4d6;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
 }
 
 .socials {
@@ -121,9 +195,12 @@ footer {
 }
 .socials li{
     display: inline-block;
+    margin-left: 10px;
 }
 
 .socials img {
     width: 32px;
-
+}
+.socials img:hover {
+    opacity: 0.5px;
 }

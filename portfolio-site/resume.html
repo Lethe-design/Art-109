@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Resume | Ashanty Lemus</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="css/style.css">
   </head>
   <body class="resume">
@@ -38,6 +41,7 @@
         <h2>Projects</h2>
         <p>Optional paragraph for the Projects summary. Delete if not being used.</p>
 
+        <div class="project-wrapper">
         <!-- To add more items, copy this whole <section></section> block-->
         <section class="project-item">
           <img src="images/Screenshot 2025-03-22 220452.png" srcset="" alt="Coded BMO" width="" height="">
@@ -61,6 +65,7 @@
         </section>
         
         <!-- End content edits here. -->
+         </div>
       </section>
 
       <!-- //  WORK EXPERIENCE  // -->
@@ -70,10 +75,14 @@
         <p>Optional paragraph for work experience summary. Not a part of the job details. Delete if not being used.</p>
 
         <!-- To add more items, copy this whole <section></section> block -->
-        <section>
+        <section class="work-item">
+          <div class="work-details">
           <h3>Job title</h3>
           <p>Company Name</p>
           <p>Date at job</p>
+        </div>
+
+        <div class="work-summary">
           <p>Job summary goes here. Add as many paragraphs as you need.</p>
           <p>Optional list:</p>
           <ul>
@@ -82,6 +91,7 @@
             <li>Lead...</li>
             <li>Responsible for...</li>
           </ul>
+          </div>
         </section>
 
         <!-- End content edits here. -->
@@ -93,7 +103,7 @@
         <h2>Education</h2>
 
         <!-- To add more items, copy this whole <section></section> block -->
-        <section>
+        <section class="education-item">
           <h3>School name - City</h3>
           <p>Designation received or program name, year attended</p>
           <p>Summary or accomplishments.</p>
