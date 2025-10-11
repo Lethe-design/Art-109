@@ -1,5 +1,33 @@
-.right-menu {
-    position: absolute;
-    right: 40px;
-    top: 40px;
-}
+.h1 {
+      font-size: 50px; 
+      color: #000000; 
+      text-align: center; 
+      margin: 20px; 
+    }
+
+    .selectors {
+      display: flex;
+      gap: 40px;
+      justify-content: center;
+      margin-top: 40px;
+    }
+
+    label {
+      font-weight: bold;
+      display: block;
+      margin-bottom: 8px;
+      font-size: 20px; /* 🔹 made labels bigger */
+    }
+
+    select {
+      padding: 5px;
+      font-size: 16px;
+    }
+
+    .words {
+      display: flex;
+      gap: 40px;
+      justify-content: center;
+      margin-top: 40px;
+      font-size: 24px;
+    }

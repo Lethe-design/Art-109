@@ -1,20 +1,109 @@
-<label for="languages"> Select Language:</label>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Everything I wanted to know with today's internet!</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center; /* centers everything horizontally */
+    }
 
-<select name="Language">
-    <option value="Python">Python</option>
-    <option value="Javascript">Javascript</option>
-    <option value="Kotlin">Kotlin</option>
-    <option value="Java">Java</option>
-</select>
+    h1 {
+      font-size: 50px; 
+      color: #000000; 
+      text-align: center; 
+      margin: 40px 0 20px 0; /* top and bottom spacing */
+      width: 100%; /* ensures it spans full width for perfect centering */
+    }
 
-<div class="right-menu">
-<label for="languages"> Select Language:</label>
+    .selectors {
+      display: flex;
+      gap: 40px;
+      justify-content: center;
+      margin-top: 20px;
+    }
 
-<select name="Language">
-    <option value="Python">Python</option>
-    <option value="Javascript">Javascript</option>
-    <option value="Kotlin">Kotlin</option>
-    <option value="Java">Java</option>
-</select>
+    label {
+      font-weight: bold;
+      display: block;
+      margin-bottom: 8px;
+      font-size: 20px; /* bigger label text */
+    }
 
-</div>
+    select {
+      padding: 5px;
+      font-size: 16px;
+    }
+
+    .words {
+      display: flex;
+      gap: 40px;
+      justify-content: center;
+      margin-top: 40px;
+      font-size: 24px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Everything I wanted to know with today's internet!</h1>
+  
+  <div class="selectors">
+    <div>
+      <label for="safari">Select Safari:</label>
+      <select id="safari" name="safari">
+        <option value="">...</option>
+        <option value="De Young Museum">De Young Museum</option>
+        <option value="Does lucky store have donuts?">Does lucky store have donuts?</option>
+        <option value="Elote Pan">Elote Pan</option>
+        <option value="How to code a dropdown menu in html?">How to code a dropdown menu in html?</option>
+        <option value="Japanese Drawstring Lunch Bag">Japanese Drawstring Lunch Bag</option>
+        <option value="Kesha - Blow">Kesha - Blow</option>
+        <option value="Lucky Supermarket">Lucky Supermarket</option>
+        <option value="Pan Dulce">Pan Dulce</option>
+        <option value="Pibble: Wash my belly">Pibble: Wash my belly</option>
+        <option value="Pizza Brand">Pizza Brand</option>
+        <option value="Rainbow Road San Francisco">Rainbow Road San Francisco</option>
+        <option value="Shein">Shein</option>
+        <option value="Star Wars Animals Machine">Star Wars Animals Machine</option>
+        <option value="Which store has donuts for ebt?">Which store has donuts for ebt?</option>
+
+      </select>
+    </div>
+
+    <div>
+      <label for="tiktok">Select Tiktok:</label>
+      <select id="tiktok" name="tiktok">
+        <option value="">...</option>
+        <option value="Adept">Adept</option>
+        <option value="Boys baseball perm hair">Boys baseball perm hair</option>
+        <option value="Emmy Rossum">Emmy Rossum</option>
+        <option value="FARTBUCKLE">FARTBUCKLE</option>
+        <option value="Gianna Wulff Gender Reveal">Gianna Wulff Gender Reveal</option>
+        <option value="Glamorama">Glamorama</option>
+        <option value="Gojo & Geto">Gojo & Geto</option>
+        <option value="Gojo & Geto Vinyl">Gojo & Geto Vinyl</option>
+        <option value="Gyeongsu">Gyeongsu</option>
+        <option value="Hasan Piker Kaya shock collar clip">Hasan Piker Kaya shock collar clip</option>
+        <option value="Japanese Hotel">Japanese Hotel</option>
+        <option value="Lily Rose Depp">Lily Rose Depp</option>
+        <option value="LORNA">LORNA</option>
+        <option value="Mantle">Mantle</option>
+        <option value="Murtabak">Murtabak</option>
+        <option value="Octavia Blake">Octavia Blake</option>
+        <option value="Rodrick 2025">Rodrick 2025</option>
+        <option value="Shimmer & Shine">Shimmer & Shine</option>
+        <option value="Supra MK4">Supra MK4</option>
+        <option value="Unfunny popular boy costumes">Unfunny popular boy costumes</option>
+
+      </select>
+    </div>
+  </div>
+
+
+</body>
+</html>
