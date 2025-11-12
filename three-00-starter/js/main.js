@@ -45,7 +45,7 @@ function init(){
 
     // const geometry = new THREE.BoxGeometry(1, 1, 1);
     // //const materials = new THREE.MeshBasicMaterial({color:0x00ff00});
-    // const texture = new THREE.TextureLoader().load('textures/crate.gif');
+    // const texture = new THREE.TextureLoader().load('textures/grasslight-big.jpg');
     // const material = new THREE.MeshBasicMaterial({map:texture});
     // cube = new THREE.Mesh(geometry, material);
     // scene.add(cube);
