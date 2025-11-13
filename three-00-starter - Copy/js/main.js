@@ -36,9 +36,9 @@ function init(){
 
     const loader = new GLTFLoader();
 
-    loader.load('assets/chuuya_nakahara/scene.gltf', function (gltf){
-        const chuuya = gltf.scene;
-        scene.add(chuuya);
+    loader.load('assets/gudetama/scene.gltf', function (gltf){
+        const gudetama = gltf.scene;
+        scene.add(gudetama);
     })
 
     //Create Geometry
