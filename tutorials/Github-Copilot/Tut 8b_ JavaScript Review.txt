@@ -1,0 +1,30 @@
+﻿Code Challenge 1: Conditionals / If statements
+https://editor.p5js.org/ashanty.lemus/sketches/Q3u0kiZ7W
+
+
+Code Challenge 2: Conditionals + Comparisons
+https://editor.p5js.org/ashanty.lemus/sketches/FW91_Gcpp
+
+
+Code Challenge 3: Incrementing variables
+https://editor.p5js.org/ashanty.lemus/sketches/rf9GSN-lf
+
+
+Code Challenge 4: Arrays
+https://editor.p5js.org/ashanty.lemus/sketches/6MhluzQQE
+
+
+Code Challenge 5: Array operations
+https://editor.p5js.org/ashanty.lemus/sketches/_wu6XuM_u
+
+
+Code Challenge 6: For loops! Looping thru an array
+https://editor.p5js.org/ashanty.lemus/sketches/Fd6OlsWZD
+
+
+Code Challenge 7: Nested for loops - make a grid
+https://editor.p5js.org/ashanty.lemus/sketches/D8RCvzRVp
+
+
+Code Challenge 8: Objects
+https://editor.p5js.org/ashanty.lemus/sketches/pR0Lfd2Hd

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact | Art 109 Code Challenges</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav>
+    <a href="index.htm">Home</a> |
+    <a href="about.htm">About</a> |
+    <a href="contact.htm">Contact</a>
+  </nav>
+
+  <h2>Contact Us</h2>
+  <form>
+    <label for="name">Name:</label><br>
+    <input type="text" id="name" name="name" required><br><br>
+
+    <label for="phone">Phone:</label><br>
+    <input type="tel" id="phone" name="phone" pattern="\(\d{3}\)\d{3}-\d{4}" placeholder="(123)456-7890" required><br><br>
+
+    <label for="email">Email:</label><br>
+    <input type="email" id="email" name="email" required><br><br>
+
+    <input type="submit" value="Submit">
+  </form>
+</body>
+</html>
