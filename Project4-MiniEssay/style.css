@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+
+body {
+  background: radial-gradient(ellipse at center, #181818 0%, #0a0a0a 100%);
+  font-family: 'Share Tech Mono', monospace;
+  color: #e0e0e0;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  letter-spacing: 0.03em;
+}
+
+nav {
+  background: #181818;
+  padding: 1.2rem 0;
+  text-align: center;
+  margin-bottom: 2rem;
+  box-shadow: 0 2px 12px #0ff2;
+  border-bottom: 2px solid #0ff;
+}
+
+nav a {
+  color: #0ff;
+  text-decoration: none;
+  margin: 0 1.3rem;
+  font-weight: bold;
+  font-size: 1.15rem;
+  letter-spacing: 2px;
+  transition: color 0.2s, text-shadow 0.2s;
+  text-shadow: 0 0 8px #0ff8, 0 0 2px #fff;
+}
+
+nav a:hover {
+  color: #fff;
+  text-shadow: 0 0 16px #0ff, 0 0 8px #fff;
+}
+
+h2 {
+  color: #0ff;
+  text-align: center;
+  margin-top: 0;
+  font-size: 2.2rem;
+  letter-spacing: 2px;
+  text-shadow: 0 0 16px #0ff, 0 0 8px #fff;
+}
+
+.content {
+  max-width: 600px;
+  background: rgba(24, 24, 24, 0.97);
+  margin: 2rem auto;
+  padding: 2rem 2.5rem;
+  border-radius: 1.5rem;
+  box-shadow: 0 0 32px #0ff2, 0 0 8px #0ff4 inset;
+  border: 2px solid #0ff4;
+  color: #e0e0e0;
+  font-size: 1.08rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.content::before {
+  content: "";
+  position: absolute;
+  top: -40px;
+  left: -40px;
+  width: 120px;
+  height: 120px;
+  background: radial-gradient(circle, #0ff6 0%, transparent 80%);
+  filter: blur(8px);
+  z-index: 0;
+  animation: flicker 3s infinite alternate;
+}
+
+.content::after {
+  content: "";
+  position: absolute;
+  bottom: -40px;
+  right: -40px;
+  width: 120px;
+  height: 120px;
+  background: radial-gradient(circle, #0ff4 0%, transparent 80%);
+  filter: blur(12px);
+  z-index: 0;
+  animation: flicker 2.5s infinite alternate-reverse;
+}
+
+@keyframes flicker {
+  0% { opacity: 0.7; }
+  50% { opacity: 0.3; }
+  100% { opacity: 0.8; }
+}
+
+.content p, .content ul {
+  position: relative;
+  z-index: 1;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  background: #181818;
+}
+::-webkit-scrollbar-thumb {
+  background: #0ff4;
+  border-radius: 4px;
+}
