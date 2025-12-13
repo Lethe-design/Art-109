@@ -5,6 +5,15 @@ canvas {
     z-index: -1;
 }
 
-#play-button {
+#play-button,
+#pause-button,
+#volume-slider,
+#volume-label {
     visibility: hidden;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
 }
