@@ -10,6 +10,29 @@
     if(p && p.catch) p.catch(()=>{});
   }
 
+  const goodChoiceSounds = [
+    'assets/sounds/good1.mp3',
+    'assets/sounds/good2.mp3',
+    'assets/sounds/good3.mp3',
+    'assets/sounds/good4.mp3'
+  ];
+  const badChoiceSounds = [
+    'assets/sounds/bad1.mp3',
+    'assets/sounds/bad2.mp3',
+    'assets/sounds/bad3.mp3',
+    'assets/sounds/bad4.mp3'
+  ];
+
+  function playChoiceTone(tone){
+    const sources = tone === 'bad' ? badChoiceSounds : goodChoiceSounds;
+    const audio = new Audio(sources[Math.floor(Math.random()*sources.length)]);
+    tryPlay(audio, 1);
+  }
+
+  function getChoiceTone(choice){
+    return choice.tone || 'good';
+  }
+
   if(page === 'index'){
     const ambient = document.getElementById('ambient');
     const footsteps = document.getElementById('footsteps');
@@ -80,14 +103,14 @@
       6: {
         text: "The figure turns slowly toward you. In the darkness, you can't make out its features clearly. Your heartbeat quickens. A distant sound echoes through the trees — could be wind, could be something else. The path ahead splits dramatically: one way is lit by a strange blue bioluminescent glow, the other is swallowed completely by black.",
         bg: ['assets/images/forest_fork.jpg'],
-        sound: 'whisper',
+        sound: 'bad1',
         showGif: true,
         gif: 'assets/gif/fly_gif.gif',
         gifAlt: 'the figure before you',
         gotoOnClick: 'unknown.html',
         choices: [
           { text: "Follow the blue glow (uncertain)", next: 7 },
-          { text: "Follow the black path (curiosity)", next: 8 }
+          { text: "Follow the black path (curiosity)", next: 8, tone: 'bad' }
         ]
       },
       7: {
@@ -103,7 +126,7 @@
         bg: ['assets/images/forest_deep.jpg'],
         sound: 'whisper',
         choices: [
-          { text: "Accept what comes", next: 'bad' }
+          { text: "Accept what comes", next: 'bad', tone: 'bad' }
         ]
       }
     };
@@ -125,6 +148,7 @@
       if(s.sound === 'whisper') tryPlay(whisper, 0.9);
       if(s.sound === 'footsteps') tryPlay(footsteps, 0.8);
       if(s.sound === 'chime') tryPlay(document.getElementById('chime') || new Audio('assets/sounds/chime.mp3'), 0.7);
+      if(s.sound === 'bad1') tryPlay(new Audio('assets/sounds/bad1.mp3'), 0.9);
 
       // handle gif display
       const gifContainer = document.getElementById('gifContainer');
@@ -172,13 +196,14 @@
         btn.className = 'choice';
         if(c.text.toLowerCase().includes('run') || c.text.toLowerCase().includes('curiosity') || c.text.toLowerCase().includes('investigate')) btn.classList.add('danger');
         btn.textContent = c.text;
-        btn.addEventListener('click', ()=> handleChoice(c.next));
+        btn.addEventListener('click', ()=> handleChoice(c.next, getChoiceTone(c)));
         choicesEl.appendChild(btn);
       });
     }
 
-    function handleChoice(next){
-      // play a small footstep cue on choice
+    function handleChoice(next, tone){
+      // play a short thematic cue based on whether this choice is good/neutral or bad
+      playChoiceTone(tone);
       tryPlay(footsteps, 0.9);
 
       if(next === 'good' || next === 'bad'){
