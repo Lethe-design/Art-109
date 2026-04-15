@@ -224,10 +224,12 @@
     const resumeBtn = document.getElementById('resumeBtn');
     const chime = document.getElementById('chime');
     const goodAmb = document.getElementById('goodAmb');
+    const goodEndAudio = document.getElementById('GoodEndAudio');
     if(resumeBtn){
       resumeBtn.addEventListener('click', ()=>{
         resume.style.display = 'none';
         tryPlay(chime);
+        tryPlay(goodEndAudio);
         tryPlay(goodAmb);
       });
       resume.addEventListener('click',(e)=>{ if(e.target===resume) { resumeBtn.click(); }});
@@ -237,13 +239,22 @@
     const resumeBtn = document.getElementById('resumeBtn');
     const jump = document.getElementById('jump');
     const badAmb = document.getElementById('badAmb');
+    const badEndAudio = document.getElementById('BadEndAudio');
     const endScene = document.getElementById('endScene');
+    const jumpScare = document.getElementById('jumpScare');
+    if(jumpScare){
+      jumpScare.addEventListener('click', ()=>{
+        jumpScare.style.display = 'none';
+      });
+    }
     if(resumeBtn){
       resumeBtn.addEventListener('click', ()=>{
         resume.style.display = 'none';
         tryPlay(badAmb);
         setTimeout(()=> {
           tryPlay(jump);
+          tryPlay(badEndAudio);
+          if(jumpScare) jumpScare.style.display = 'block';
           if(endScene) endScene.classList.add('flash');
         }, 900);
       });

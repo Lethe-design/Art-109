@@ -110,24 +110,25 @@
   </div>
 
   <a href="start.html" class="return-link">Return to the beginning</a>
+  <audio id="BadAudio" src="assets/sounds/bad1.mp3"></audio>
 
   <script>
+    function tryPlay(audio, vol = 1){
+      if(!audio) return;
+      audio.volume = vol;
+      audio.currentTime = 0;
+      const p = audio.play();
+      if(p && p.catch) p.catch(()=>{});
+    }
+
     const questions = [
-      "Who are you?",
-      "What are you doing here?",
-      "Where do you live?",
-      "Are you human?",
-      "What do you want?",
-      "Will you let me go?"
+      "Where are you going?",
+      "You can't hide from your true self"
     ];
 
     const zoomLevels = [
       'zoom-level-1',
-      'zoom-level-2',
-      'zoom-level-3',
-      'zoom-level-4',
-      'zoom-level-5',
-      'zoom-level-6'
+      'zoom-level-2'
     ];
 
     let currentQuestion = 0;
@@ -150,7 +151,7 @@
         // Show final message
         document.querySelector('.question-container').innerHTML = `
           <div class="final-message">
-            You shouldn't have come here...
+            Once that light the turn off, you have no where to guide you.
           </div>
         `;
       }
@@ -159,6 +160,11 @@
     // Add subtle breathing effect to the background
     let breathDirection = 1;
     let breathScale = 1;
+     // Play bad audio when page loads
+    window.addEventListener('load', ()=> {
+      const badAudio = document.getElementById('BadAudio');
+      tryPlay(badAudio, 0.8);
+    });
 
     function breathe() {
       breathScale += breathDirection * 0.001;
