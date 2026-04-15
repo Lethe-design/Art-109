@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Unknown — ??</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #000;
+      background-image: url('assets/images/Unknown.jpeg');
+      background-size: 100%;
+      background-position: center;
+      background-repeat: no-repeat;
+      height: 100vh;
+      font-family: Creep, monospace;
+      transition: background-size 1.5s ease-in-out;
+      overflow: hidden;
+    }
+
+    .question-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      color: white;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+      position: relative;
+      z-index: 10;
+    }
+
+    .question {
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
+      text-align: center;
+      opacity: 0;
+      animation: fadeIn 1s ease-in-out forwards;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .question:hover {
+      transform: scale(1.05);
+    }
+
+    .hint {
+      font-size: 1rem;
+      opacity: 0.7;
+      margin-top: 1rem;
+      animation: fadeIn 2s ease-in-out 1s forwards;
+      opacity: 0;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .zoom-level-1 { background-size: 100%; }
+    .zoom-level-2 { background-size: 120%; }
+    .zoom-level-3 { background-size: 150%; }
+    .zoom-level-4 { background-size: 200%; }
+    .zoom-level-5 { background-size: 300%; }
+    .zoom-level-6 { background-size: 500%; }
+
+    .final-message {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      font-size: 3rem;
+      color: red;
+      text-shadow: 3px 3px 6px rgba(0,0,0,0.9);
+      opacity: 0;
+      animation: fadeIn 2s ease-in-out forwards;
+    }
+
+    .return-link {
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+      color: white;
+      text-decoration: none;
+      padding: 10px 20px;
+      border: 2px solid white;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+      opacity: 1;
+      z-index: 100;
+    }
+
+    .return-link:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+  </style>
+</head>
+<body class="zoom-level-1">
+  <div class="question-container">
+    <div class="question" id="question1" onclick="nextQuestion(1)">Who are you?</div>
+    <div class="hint">Click to continue...</div>
+  </div>
+
+  <a href="start.html" class="return-link">Return to the beginning</a>
+
+  <script>
+    const questions = [
+      "Who are you?",
+      "What are you doing here?",
+      "Where do you live?",
+      "Are you human?",
+      "What do you want?",
+      "Will you let me go?"
+    ];
+
+    const zoomLevels = [
+      'zoom-level-1',
+      'zoom-level-2',
+      'zoom-level-3',
+      'zoom-level-4',
+      'zoom-level-5',
+      'zoom-level-6'
+    ];
+
+    let currentQuestion = 0;
+
+    function nextQuestion(questionIndex) {
+      currentQuestion++;
+
+      if (currentQuestion < questions.length) {
+        // Update question text
+        const questionEl = document.getElementById('question1');
+        questionEl.textContent = questions[currentQuestion];
+        questionEl.style.animation = 'none';
+        setTimeout(() => {
+          questionEl.style.animation = 'fadeIn 1s ease-in-out forwards';
+        }, 10);
+
+        // Apply zoom effect
+        document.body.className = zoomLevels[currentQuestion];
+      } else {
+        // Show final message
+        document.querySelector('.question-container').innerHTML = `
+          <div class="final-message">
+            You shouldn't have come here...
+          </div>
+        `;
+      }
+    }
+
+    // Add subtle breathing effect to the background
+    let breathDirection = 1;
+    let breathScale = 1;
+
+    function breathe() {
+      breathScale += breathDirection * 0.001;
+      if (breathScale > 1.02) breathDirection = -1;
+      if (breathScale < 0.98) breathDirection = 1;
+
+      const currentZoom = zoomLevels[Math.min(currentQuestion, zoomLevels.length - 1)];
+      const baseSize = parseInt(currentZoom.replace('zoom-level-', '')) * 10; // Convert to percentage
+      document.body.style.backgroundSize = `${baseSize * breathScale}%`;
+    }
+
+    setInterval(breathe, 100);
+  </script>
+</body>
+</html>

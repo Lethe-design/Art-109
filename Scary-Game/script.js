@@ -21,25 +21,26 @@
     // longer gameplay: define a small state machine of scenes
     const scenes = {
       0: {
-        text: "You step out into the evening — the park glows under lamp light and the forest waits at the edge.",
+        text: "You step out into the evening — the park glows under lamp light and the forest waits at the edge. The air is cool, carrying the scent of earth and autumn leaves. You pause for a moment, deciding your path home.",
         bg: ['assets/images/park_mist.jpg','assets/images/park_lamps.jpg','assets/images/park_dusk.jpg'],
         choices: [
           { text: "Follow the lit park path home", next: 1 },
           { text: "Head into the forest path", next: 3 }
         ]
       },
-      // Park branch — a calm longer path with one small event
+      // Park branch — a calm longer path with more narrative
       1: {
-        text: "You follow the warm lamps, breathing easy. A stray dog trots beside you, nudging your hand. The bench ahead looks inviting.",
+        text: "You follow the warm lamps, breathing easy. Your pace quickens slightly as darkness creeps at the edges. A stray dog suddenly trots beside you, nudging your hand. The bench ahead looks inviting, and you notice a few people still lingering in the distance.",
         bg: ['assets/images/park_lamps.jpg'],
         sound: 'footsteps',
+        showGif: false,
         choices: [
           { text: "Sit on the bench to rest", next: 2 },
           { text: "Keep walking home", next: 'good' }
         ]
       },
       2: {
-        text: "You sit and the dog curls at your feet. A neighbor greets you and points out a shortcut that leads safely home.",
+        text: "You sit and the dog curls at your feet. A neighbor greets you warmly and sits nearby. They point out a shortcut through the adjacent gardens that they say leads safely home. It would cut your walk in half. The dog's warmth comforts you.",
         bg: ['assets/images/park_dusk.jpg'],
         sound: 'chime',
         choices: [
@@ -48,9 +49,9 @@
         ]
       },
 
-      // Forest branch — multiple steps to lengthen tension
+      // Forest branch — multiple steps to lengthen tension with more narrative depth
       3: {
-        text: "You step off the lamps' reach. The trees close around you, and your footsteps sound hollow. A whisper brushes past your ear.",
+        text: "You step off the lamps' reach. The temperature drops noticeably. The trees close around you like a living wall, and your footsteps sound hollow on the path. A whisper brushes past your ear — almost like someone calling your name, but not quite. Your heart rate picks up.",
         bg: ['assets/images/forest_edge.jpg','assets/images/park_mist.jpg'],
         sound: 'whisper',
         choices: [
@@ -59,16 +60,16 @@
         ]
       },
       4: {
-        text: "Your voice echoes. A faint light flickers between trunks ahead. Something moves where the light doesn't reach.",
+        text: "Your voice echoes through the dark. A faint light flickers between trunks ahead — possibly a flashlight, possibly something else. Something moves in the periphery where the light doesn't quite reach. You feel watched.",
         bg: ['assets/images/forest_path.jpg'],
         sound: 'whisper',
         choices: [
-          { text: "Approach the flicker", next: 6 },
+          { text: "Approach the flicker cautiously", next: 6 },
           { text: "Retreat toward the park", next: 1 }
         ]
       },
       5: {
-        text: "You hurry along the narrow trail; branches scrape your jacket. You catch a glimpse of a figure standing by a fallen log.",
+        text: "You hurry along the narrow trail, trying to remain calm. Branches scrape your jacket and pull at your sleeves. You catch a glimpse of a figure standing motionless by a fallen log. It doesn't react to your presence. The silence is deafening.",
         bg: ['assets/images/forest_deep.jpg'],
         sound: 'footsteps',
         choices: [
@@ -77,12 +78,32 @@
         ]
       },
       6: {
-        text: "The figure turns. Something is wrong. Your heartbeat quickens — the path splits into two: one lit by a strange blue glow, the other swallowed by black.",
+        text: "The figure turns slowly toward you. In the darkness, you can't make out its features clearly. Your heartbeat quickens. A distant sound echoes through the trees — could be wind, could be something else. The path ahead splits dramatically: one way is lit by a strange blue bioluminescent glow, the other is swallowed completely by black.",
         bg: ['assets/images/forest_fork.jpg'],
         sound: 'whisper',
+        showGif: true,
+        gif: 'assets/gif/fly_gif.gif',
+        gifAlt: 'the figure before you',
+        gotoOnClick: 'unknown.html',
         choices: [
-          { text: "Follow the blue glow (uncertain)", next: 'good' }, // an unlikely safe escape
-          { text: "Follow the black path (curiosity)", next: 'bad' }
+          { text: "Follow the blue glow (uncertain)", next: 7 },
+          { text: "Follow the black path (curiosity)", next: 8 }
+        ]
+      },
+      7: {
+        text: "You hesitate, then push toward the blue light. The glow intensifies with each step, becoming almost blinding. You shield your eyes. Behind you, the figure has vanished. Ahead, you see a break in the trees — lights from town beyond. The strange blue glow was just bioluminescent fungi. You've found your way out.",
+        bg: ['assets/images/park_lamps.jpg'],
+        sound: 'chime',
+        choices: [
+          { text: "Emerge to safety", next: 'good' }
+        ]
+      },
+      8: {
+        text: "Against your better judgment, you step into the void. Behind you, the blue light fades. The darkness is absolute now. Your breath comes faster. The figure follows. The whispers grow louder, and you realize they form words — ancient, incomprehensible, pulling at the edges of your sanity. There is no way back.",
+        bg: ['assets/images/forest_deep.jpg'],
+        sound: 'whisper',
+        choices: [
+          { text: "Accept what comes", next: 'bad' }
         ]
       }
     };
@@ -103,6 +124,29 @@
       setBackground(s.bg);
       if(s.sound === 'whisper') tryPlay(whisper, 0.9);
       if(s.sound === 'footsteps') tryPlay(footsteps, 0.8);
+      if(s.sound === 'chime') tryPlay(document.getElementById('chime') || new Audio('assets/sounds/chime.mp3'), 0.7);
+
+      // handle gif display
+      const gifContainer = document.getElementById('gifContainer');
+      if(s.showGif && gifContainer) {
+        gifContainer.style.display = 'block';
+        const gifImg = document.getElementById('narrativeGif');
+        if(gifImg && s.gif) {
+          gifImg.src = s.gif;
+          gifImg.alt = s.gifAlt || 'narrative element';
+          // remove existing click handlers
+          gifImg.onclick = null;
+          // add click handler if gotoOnClick is defined
+          if(s.gotoOnClick) {
+            gifImg.style.cursor = 'pointer';
+            gifImg.onclick = () => {
+              window.location.href = s.gotoOnClick;
+            };
+          }
+        }
+      } else if(gifContainer) {
+        gifContainer.style.display = 'none';
+      }
 
       // reveal text with simple type effect
       const full = s.text;
