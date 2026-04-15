@@ -65,7 +65,6 @@
       2: {
         text: "You sit and the dog curls at your feet. A neighbor greets you warmly and sits nearby. They point out a shortcut through the adjacent gardens that they say leads safely home. It would cut your walk in half. The dog's warmth comforts you.",
         bg: ['assets/images/park_dusk.jpg'],
-        sound: 'chime',
         choices: [
           { text: "Take the shortcut home (safe)", next: 'good' },
           { text: "Ignore it and wander a bit longer", next: 3 } // accidentally leads toward forest edge
@@ -116,7 +115,6 @@
       7: {
         text: "You hesitate, then push toward the blue light. The glow intensifies with each step, becoming almost blinding. You shield your eyes. Behind you, the figure has vanished. Ahead, you see a break in the trees — lights from town beyond. The strange blue glow was just bioluminescent fungi. You've found your way out.",
         bg: ['assets/images/park_lamps.jpg'],
-        sound: 'chime',
         choices: [
           { text: "Emerge to safety", next: 'good' }
         ]
@@ -147,7 +145,6 @@
       setBackground(s.bg);
       if(s.sound === 'whisper') tryPlay(whisper, 0.9);
       if(s.sound === 'footsteps') tryPlay(footsteps, 0.8);
-      if(s.sound === 'chime') tryPlay(document.getElementById('chime') || new Audio('assets/sounds/chime.mp3'), 0.7);
       if(s.sound === 'bad1') tryPlay(new Audio('assets/sounds/bad1.mp3'), 0.9);
 
       // handle gif display
@@ -209,10 +206,7 @@
       if(next === 'good' || next === 'bad'){
         // brief delay to build tension before end page
         setTimeout(()=> {
-          // play short sounds before leaving
           if(next === 'good'){
-            const chime = new Audio('assets/sounds/chime.mp3');
-            tryPlay(chime, 1);
             setTimeout(()=> window.location.href = 'good.html', 900);
           } else {
             const j = new Audio('assets/sounds/jump_scare.mp3');
@@ -247,15 +241,11 @@
   else if(page === 'good'){
     const resume = document.getElementById('resumeOverlay');
     const resumeBtn = document.getElementById('resumeBtn');
-    const chime = document.getElementById('chime');
-    const goodAmb = document.getElementById('goodAmb');
     const goodEndAudio = document.getElementById('GoodEndAudio');
     if(resumeBtn){
       resumeBtn.addEventListener('click', ()=>{
         resume.style.display = 'none';
-        tryPlay(chime);
         tryPlay(goodEndAudio);
-        tryPlay(goodAmb);
       });
       resume.addEventListener('click',(e)=>{ if(e.target===resume) { resumeBtn.click(); }});
     }
@@ -263,7 +253,6 @@
     const resume = document.getElementById('resumeOverlay');
     const resumeBtn = document.getElementById('resumeBtn');
     const jump = document.getElementById('jump');
-    const badAmb = document.getElementById('badAmb');
     const badEndAudio = document.getElementById('BadEndAudio');
     const endScene = document.getElementById('endScene');
     const jumpScare = document.getElementById('jumpScare');
@@ -275,7 +264,6 @@
     if(resumeBtn){
       resumeBtn.addEventListener('click', ()=>{
         resume.style.display = 'none';
-        tryPlay(badAmb);
         setTimeout(()=> {
           tryPlay(jump);
           tryPlay(badEndAudio);
