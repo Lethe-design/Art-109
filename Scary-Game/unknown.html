@@ -110,7 +110,7 @@
   </div>
 
   <a href="start.html" class="return-link">Return to the beginning</a>
-  <audio id="BadAudio" src="assets/sounds/bad1.mp3"></audio>
+  <audio id="unknownAudio" src="assets/sounds/unknown_sound.mp3"></audio>
 
   <script>
     function tryPlay(audio, vol = 1){
@@ -162,7 +162,7 @@
     let breathScale = 1;
      // Play bad audio when page loads
     window.addEventListener('load', ()=> {
-      const badAudio = document.getElementById('BadAudio');
+      const badAudio = document.getElementById('unknownAudio');
       tryPlay(badAudio, 0.8);
     });
 
